@@ -1,8 +1,24 @@
 import type { Metadata } from 'next';
+import { Fira_Sans, Fira_Code } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+const firaSans = Fira_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-fira-sans',
+});
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-fira-code',
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
 
@@ -154,12 +170,10 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${firaSans.variable} ${firaCode.variable}`}>
       <head>
-        {/* Preconnect for performance */}
+        {/* Preconnect for image performance */}
         <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Global structured data */}
         <script

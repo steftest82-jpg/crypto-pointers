@@ -62,19 +62,17 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          '"Fira Sans"',
+          'var(--font-fira-sans)',
           '"Gill Sans"',
           '"Optima"',
           '"Segoe UI"',
-          '"Calibri"',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
-          'BlinkMacSystemFont',
           'sans-serif',
         ],
         heading: [
-          '"Fira Sans"',
+          'var(--font-fira-sans)',
           '"Gill Sans"',
           '"Optima"',
           'ui-sans-serif',
@@ -82,7 +80,7 @@ const config: Config = {
           'sans-serif',
         ],
         mono: [
-          '"Fira Code"',
+          'var(--font-fira-code)',
           '"JetBrains Mono"',
           'ui-monospace',
           'SFMono-Regular',
