@@ -1,6 +1,4 @@
-import KeystaticApp from '@keystatic/next/ui/app';
+import { makePage } from '@keystatic/next/ui/app';
 import config from '../../../../keystatic.config';
 
-export default function KeystaticPage() {
-  return <KeystaticApp config={config} />;
-}
+export default makePage(config);
