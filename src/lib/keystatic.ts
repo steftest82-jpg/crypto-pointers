@@ -33,56 +33,119 @@ function ensurePostsDir(): void {
   }
 }
 
-export function getAllPosts(): Post[] {
-  ensurePostsDir();
-
-  // Support both flat files (slug.mdx) and subdirectories (slug/index.mdx)
+function findPostFiles(): { filePath: string; slug: string }[] {
   const entries = fs.readdirSync(POSTS_DIR);
-  const posts: Post[] = [];
+  const files: { filePath: string; slug: string }[] = [];
 
   for (const entry of entries) {
     const entryPath = path.join(POSTS_DIR, entry);
     const stat = fs.statSync(entryPath);
-    let filePath: string | null = null;
 
     if (stat.isDirectory()) {
-      // Subdirectory: look for index.mdx or index.md
       const indexMdx = path.join(entryPath, 'index.mdx');
       const indexMd = path.join(entryPath, 'index.md');
-      if (fs.existsSync(indexMdx)) filePath = indexMdx;
-      else if (fs.existsSync(indexMd)) filePath = indexMd;
+      if (fs.existsSync(indexMdx)) files.push({ filePath: indexMdx, slug: entry });
+      else if (fs.existsSync(indexMd)) files.push({ filePath: indexMd, slug: entry });
     } else if (entry.endsWith('.mdx') || entry.endsWith('.md')) {
-      filePath = entryPath;
+      files.push({ filePath: entryPath, slug: entry.replace(/\.mdx?$/, '') });
     }
-
-    if (!filePath) continue;
-
-    const raw = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(raw);
-
-    const frontmatter: PostFrontmatter = {
-      title: (data.title as string) || '',
-      slug:
-        (data.slug as string) ||
-        entry.replace(/\.mdx?$/, ''),
-      publishedAt: (data.publishedAt as string) || new Date().toISOString(),
-      excerpt: (data.excerpt as string) || '',
-      coverImage: (data.coverImage as string) || 'https://picsum.photos/seed/crypto/1200/630',
-      author: (data.author as string) || 'Yosef Kamel',
-      focusKeyword: (data.focusKeyword as string) || '',
-      categories: Array.isArray(data.categories)
-        ? (data.categories as string[])
-        : [],
-      tableOfContents: Array.isArray(data.tableOfContents)
-        ? (data.tableOfContents as TOCItem[])
-        : [],
-      keyTakeaways: Array.isArray(data.keyTakeaways)
-        ? (data.keyTakeaways as string[])
-        : [],
-    };
-
-    posts.push({ frontmatter, content });
   }
+  return files;
+}
+
+function parsePostFile(filePath: string, slug: string): Post {
+  const raw = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(raw);
+
+  const frontmatter: PostFrontmatter = {
+    title: (data.title as string) || '',
+    slug: (data.slug as string) || slug,
+    publishedAt: (data.publishedAt as string) || new Date().toISOString(),
+    excerpt: (data.excerpt as string) || '',
+    coverImage: (data.coverImage as string) || 'https://picsum.photos/seed/crypto/1200/630',
+    author: (data.author as string) || 'Yosef Kamel',
+    focusKeyword: (data.focusKeyword as string) || '',
+    categories: Array.isArray(data.categories) ? (data.categories as string[]) : [],
+    tableOfContents: Array.isArray(data.tableOfContents) ? (data.tableOfContents as TOCItem[]) : [],
+    keyTakeaways: Array.isArray(data.keyTakeaways) ? (data.keyTakeaways as string[]) : [],
+  };
+
+  return { frontmatter, content };
+}
+
+// Fast frontmatter-only extraction (no gray-matter, no full content read)
+function extractFrontmatterFast(filePath: string, slug: string): PostFrontmatter {
+  const raw = fs.readFileSync(filePath, 'utf-8');
+  const fmEnd = raw.indexOf('\n---', 4);
+  if (fmEnd === -1) return { title: slug, slug, publishedAt: '', excerpt: '', coverImage: '', author: 'Yosef Kamel', focusKeyword: '', categories: [], tableOfContents: [], keyTakeaways: [] };
+
+  const fmBlock = raw.substring(4, fmEnd); // skip initial "---\n"
+  const data: Record<string, string> = {};
+  const arrays: Record<string, string[]> = {};
+  let currentArrayKey = '';
+
+  for (const line of fmBlock.split('\n')) {
+    if (currentArrayKey && line.match(/^\s+-\s+/)) {
+      arrays[currentArrayKey].push(line.replace(/^\s+-\s+/, '').replace(/^['"]|['"]$/g, '').trim());
+      continue;
+    }
+    currentArrayKey = '';
+    const m = line.match(/^(\w+):\s*(.*)$/);
+    if (m) {
+      const val = m[2].trim().replace(/^['"]|['"]$/g, '');
+      if (val === '' || val === '[]') {
+        currentArrayKey = m[1];
+        arrays[currentArrayKey] = [];
+      } else {
+        data[m[1]] = val;
+      }
+    }
+  }
+
+  return {
+    title: data.title || slug,
+    slug: data.slug || slug,
+    publishedAt: data.publishedAt || '',
+    excerpt: data.excerpt || '',
+    coverImage: data.coverImage || '',
+    author: data.author || 'Yosef Kamel',
+    focusKeyword: data.focusKeyword || '',
+    categories: arrays.categories || [],
+    tableOfContents: [],
+    keyTakeaways: arrays.keyTakeaways || [],
+  };
+}
+
+let _allPostsCache: Post[] | null = null;
+
+export function getAllPosts(): Post[] {
+  if (_allPostsCache) return _allPostsCache;
+  ensurePostsDir();
+
+  const files = findPostFiles();
+  const posts = files.map(({ filePath, slug }) => parsePostFile(filePath, slug));
+
+  posts.sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishedAt).getTime() -
+      new Date(a.frontmatter.publishedAt).getTime()
+  );
+
+  _allPostsCache = posts;
+  return posts;
+}
+
+// Lightweight listing — reads only frontmatter, no content parsing
+export function getAllPostsFrontmatter(): { frontmatter: PostFrontmatter; wordCount: number }[] {
+  ensurePostsDir();
+  const files = findPostFiles();
+  const posts = files.map(({ filePath, slug }) => {
+    const fm = extractFrontmatterFast(filePath, slug);
+    // Rough word count from file size (avoids reading full content)
+    const stat = fs.statSync(filePath);
+    const wordCount = Math.round(stat.size / 6); // ~6 bytes per word avg
+    return { frontmatter: fm, wordCount };
+  });
 
   posts.sort(
     (a, b) =>

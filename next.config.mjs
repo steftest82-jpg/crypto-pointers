@@ -37,6 +37,7 @@ const nextConfig = {
       },
     ],
   },
+  staticPageGenerationTimeout: 120,
   experimental: {
     mdxRs: true,
   },
