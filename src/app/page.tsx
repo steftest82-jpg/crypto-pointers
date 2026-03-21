@@ -5,6 +5,7 @@ import PostCard from '@/components/PostCard';
 import AuthorCard from '@/components/AuthorCard';
 import NewsletterSection from '@/components/NewsletterSection';
 import CategoryTabs from '@/components/CategoryTabs';
+import { getAllPosts, estimateReadingTime } from '@/lib/keystatic';
 
 export const metadata: Metadata = {
   title: 'Crypto Pointers — Your Trusted Crypto Magazine',
@@ -15,105 +16,26 @@ export const metadata: Metadata = {
   },
 };
 
-const featuredPost = {
-  slug: 'bitcoin-surges-past-100k',
-  title: 'Bitcoin Surges Past $100K: What It Means for Your Portfolio',
-  excerpt:
-    'Bitcoin has shattered the $100,000 barrier for the first time in history. We break down the catalysts behind this historic move, what institutional players are doing, and exactly how you should position your portfolio right now to capture upside while managing risk.',
-  coverImage:
-    'http://img.b2bpic.net/premium-photo/vibrant-illustration-businessman-celebrating-success-with-dynamic-colors-expressive-movements_34926-7829.jpg',
-  category: 'Crypto News',
-  categorySlug: 'crypto-news',
-  author: 'Yosef Kamel',
-  publishedAt: '2024-12-15',
-  readingTime: '7 min read',
-};
+function getHomepageData() {
+  const allPosts = getAllPosts();
 
-const latestPosts = [
-  {
-    slug: 'beginners-guide-crypto-investing-2025',
-    title: "The Complete Beginner's Guide to Cryptocurrency Investing in 2025",
-    excerpt:
-      'New to crypto? This comprehensive guide walks you through everything from setting up your first wallet to building a diversified portfolio that matches your risk tolerance.',
-    coverImage:
-      'http://img.b2bpic.net/free-photo/study-halls-biology-digital-illustrations_456031-75.jpg',
-    category: 'Crypto Guides',
-    categorySlug: 'crypto-guides',
-    author: 'Yosef Kamel',
-    publishedAt: '2024-12-10',
-    readingTime: '12 min read',
-  },
-  {
-    slug: 'ethereum-vs-solana-2025',
-    title:
-      'Ethereum vs Solana: Which Blockchain Deserves Your Investment in 2025?',
-    excerpt:
-      'The battle between Ethereum and Solana intensifies. We compare fees, speed, ecosystem maturity, and investment potential to help you decide where to allocate capital.',
-    coverImage:
-      'http://img.b2bpic.net/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg',
-    category: 'Crypto Reviews',
-    categorySlug: 'crypto-reviews',
-    author: 'Yosef Kamel',
-    publishedAt: '2024-12-05',
-    readingTime: '9 min read',
-  },
-  {
-    slug: 'top-5-crypto-wallets-reviewed',
-    title:
-      'Top 5 Crypto Wallets Reviewed: Security, Ease of Use & Features Compared',
-    excerpt:
-      'Your crypto is only as safe as your wallet. We tested and reviewed the top 5 crypto wallets of 2025, ranking them on security, user experience, and supported assets.',
-    coverImage:
-      'http://img.b2bpic.net/free-photo/blurred-hotel-reception_1203-89.jpg',
-    category: 'Crypto Reviews',
-    categorySlug: 'crypto-reviews',
-    author: 'Yosef Kamel',
-    publishedAt: '2024-11-28',
-    readingTime: '8 min read',
-  },
-  {
-    slug: 'defi-yield-farming-explained',
-    title:
-      'DeFi Yield Farming Explained: How to Earn Passive Income with Crypto',
-    excerpt:
-      'Yield farming can generate substantial passive income, but the risks are real. This guide explains how DeFi yield farming works, the best strategies, and how to avoid common traps.',
-    coverImage:
-      'http://img.b2bpic.net/premium-photo/lizard-sweater-contemplating-sunset_1150025-79783.jpg',
-    category: 'Crypto Guides',
-    categorySlug: 'crypto-guides',
-    author: 'Yosef Kamel',
-    publishedAt: '2024-11-20',
-    readingTime: '10 min read',
-  },
-  {
-    slug: 'sec-approves-spot-ethereum-etf',
-    title:
-      'Breaking: SEC Approves Spot Ethereum ETF — A New Era for Crypto Markets',
-    excerpt:
-      'The SEC has officially approved spot Ethereum ETFs, opening the floodgates for institutional capital. Here is what this landmark decision means for ETH price and the broader market.',
-    coverImage:
-      'http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg',
-    category: 'Crypto News',
-    categorySlug: 'crypto-news',
-    author: 'Yosef Kamel',
-    publishedAt: '2024-11-15',
-    readingTime: '6 min read',
-  },
-  {
-    slug: 'crypto-portfolio-allocation-strategy',
-    title:
-      'How to Build a Bulletproof Crypto Portfolio: The 2025 Allocation Strategy',
-    excerpt:
-      'Stop guessing and start allocating with intention. Our data-driven crypto portfolio strategy balances growth, stability, and risk management for serious investors.',
-    coverImage:
-      'http://img.b2bpic.net/free-photo/study-halls-biology-digital-illustrations_456031-75.jpg',
-    category: 'Crypto Investing',
-    categorySlug: 'crypto-investing',
-    author: 'Yosef Kamel',
-    publishedAt: '2024-11-10',
-    readingTime: '11 min read',
-  },
-];
+  const toPostCard = (post: ReturnType<typeof getAllPosts>[number]) => ({
+    slug: post.frontmatter.slug,
+    title: post.frontmatter.title,
+    excerpt: post.frontmatter.excerpt,
+    coverImage: post.frontmatter.coverImage,
+    category: post.frontmatter.categories[0] || '',
+    categorySlug: (post.frontmatter.categories[0] || '').toLowerCase().replace(/\s+/g, '-'),
+    author: post.frontmatter.author,
+    publishedAt: post.frontmatter.publishedAt,
+    readingTime: `${estimateReadingTime(post.content)} min read`,
+  });
+
+  const featured = toPostCard(allPosts[0]);
+  const latest = allPosts.slice(1, 7).map(toPostCard);
+
+  return { featured, latest };
+}
 
 const trendingTopics = [
   { label: 'Bitcoin ETF', href: '/blog' },
@@ -125,6 +47,8 @@ const trendingTopics = [
 ];
 
 export default function HomePage() {
+  const { featured: featuredPost, latest: latestPosts } = getHomepageData();
+
   const formattedFeaturedDate = new Date(
     featuredPost.publishedAt
   ).toLocaleDateString('en-US', {
