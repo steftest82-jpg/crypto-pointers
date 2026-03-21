@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-669573621" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#451A03"/>
+      <stop offset="100%" stop-color="#1a0a02"/>
+    </linearGradient>
+    <radialGradient id="orb1-669573621" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FCD34D" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FCD34D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2-669573621" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent-line-669573621" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-669573621)"/>
+
+  <!-- Glow orbs -->
+  <ellipse cx="1075.2650582231581" cy="-97.8216125164181" rx="350" ry="300" fill="url(#orb1-669573621)"/>
+  <ellipse cx="-70.2288041356951" cy="412.2261194046587" rx="300" ry="280" fill="url(#orb2-669573621)"/>
+
+  <!-- Category decorations -->
+  <circle cx="723.7242062576115" cy="80.10718024335802" r="24.2883130768314" fill="#FCD34D" opacity="0.04834508376661688"/><circle cx="717.723323777318" cy="512.0419279485941" r="44.18340359348804" fill="#FCD34D" opacity="0.03205198380164802"/><circle cx="14.108935464173555" cy="521.634384803474" r="60.643051834777" fill="#FCD34D" opacity="0.04229221880435943"/><circle cx="1062.8005592152476" cy="438.6368241067976" r="70.94726397655904" fill="#FCD34D" opacity="0.06935636533889919"/><circle cx="1120.9110332652926" cy="314.1995584429242" r="21.77291439846158" fill="#FCD34D" opacity="0.03454997935798019"/><circle cx="481.12850384786725" cy="267.26904233917594" r="78.93591930624098" fill="#FCD34D" opacity="0.07098422369454055"/><circle cx="1130.5809239856899" cy="549.0577223617584" r="31.5265758568421" fill="#FCD34D" opacity="0.060572193581610916"/><circle cx="806.033505499363" cy="472.20673606731" r="23.398958770558238" fill="#FCD34D" opacity="0.07349465328734367"/><line x1="210.02436708658934" y1="443.8149084895849" x2="341.350812651217" y2="384.8636825894937" stroke="#FCD34D" stroke-width="1" opacity="0.08"/><line x1="1014.383246563375" y1="563.4738308214583" x2="1207.710402738303" y2="445.28425031574443" stroke="#FCD34D" stroke-width="1" opacity="0.08"/><line x1="1137.1840791776776" y1="392.52501427195966" x2="1345.0627999845892" y2="335.74319841805845" stroke="#FCD34D" stroke-width="1" opacity="0.08"/><line x1="384.2230726964772" y1="49.06980205094442" x2="682.1892113890499" y2="-93.37764744879678" stroke="#FCD34D" stroke-width="1" opacity="0.08"/>
+
+  <!-- Large icon watermark -->
+  <path d="1013.854618425481,124.1312640439719 L929.4055142439902,256.83699918631464 L1025.918776165694,256.83699918631464 L989.7263029450551,365.41441884823143 L1098.3037226069719,220.6445259656757 L1001.790460685268,220.6445259656757 L1062.111249386333,124.1312640439719" fill="#FCD34D" opacity="0.15"/>
+
+  <!-- Subtle grid overlay -->
+  <rect width="1200" height="630" fill="url(#bg-669573621)" opacity="0"/>
+
+  <!-- Bottom gradient overlay for text readability -->
+  <rect x="0" y="300" width="1200" height="330" fill="url(#bg-669573621)" opacity="0.3"/>
+
+  <!-- Accent line -->
+  <rect x="80" y="240" width="60" height="4" rx="2" fill="url(#accent-line-669573621)"/>
+
+  <!-- Category badge -->
+  <rect x="80" y="200" width="76" height="30" rx="15" fill="#FCD34D" opacity="0.2"/>
+  <text x="96" y="220" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#FCD34D" letter-spacing="2" text-anchor="start">NEWS</text>
+
+  <!-- Title -->
+  <text x="80" y="300" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Crypto Adoption in Africa Grows 45%</text>
+  <text x="80" y="352.5" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Year-Over-Year</text>
+
+  <!-- Author bar -->
+  <g transform="translate(80, 435)">
+    <!-- Author avatar circle -->
+    <circle cx="16" cy="12" r="16" fill="#FCD34D" opacity="0.2"/>
+    <text x="16" y="17" font-family="'Fira Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#FCD34D" text-anchor="middle">YK</text>
+
+    <text x="44" y="10" font-family="'Fira Sans', Arial, sans-serif" font-size="14" font-weight="600" fill="#FCD34D">Yosef Kamel</text>
+    <text x="44" y="28" font-family="'Fira Sans', Arial, sans-serif" font-size="12" font-weight="400" fill="white" opacity="0.5">Crypto Pointers</text>
+  </g>
+
+  <!-- Branding: bottom bar -->
+  <rect x="0" y="610" width="1200" height="20" fill="#FCD34D" opacity="0.08"/>
+  <text x="1120" y="600" font-family="'Fira Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="white" opacity="0.25" text-anchor="end">cryptopointers.com</text>
+
+  <!-- Corner accent -->
+  <rect x="0" y="0" width="4" height="630" fill="#FCD34D" opacity="0.3"/>
+</svg>

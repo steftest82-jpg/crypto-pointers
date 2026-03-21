@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-812160981" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2332"/>
+      <stop offset="100%" stop-color="#0d1520"/>
+    </linearGradient>
+    <radialGradient id="orb1-812160981" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4FC3F7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4FC3F7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2-812160981" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent-line-812160981" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4FC3F7"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-812160981)"/>
+
+  <!-- Glow orbs -->
+  <ellipse cx="1074.5226302416995" cy="-35.312179662287235" rx="350" ry="300" fill="url(#orb1-812160981)"/>
+  <ellipse cx="164.1503388993442" cy="530.8795337565243" rx="300" ry="280" fill="url(#orb2-812160981)"/>
+
+  <!-- Category decorations -->
+  <circle cx="60" cy="60" r="3.101024624891579" fill="#4FC3F7" opacity="0.11630259267985821"/><circle cx="60" cy="148.56047146953642" r="2.490332880988717" fill="#4FC3F7" opacity="0.07947334146127105"/><circle cx="60" cy="463.6959411110729" r="2.8221201593987644" fill="#4FC3F7" opacity="0.12160266453400255"/><circle cx="60" cy="576.7213525343686" r="2.932556062238291" fill="#4FC3F7" opacity="0.0809158822707832"/><circle cx="160.66353011876345" cy="150.18049143254757" r="4.35815693391487" fill="#4FC3F7" opacity="0.09703918168321252"/><circle cx="160.66353011876345" cy="233.3333665970713" r="2.471331818960607" fill="#4FC3F7" opacity="0.08381363589316607"/><circle cx="160.66353011876345" cy="431.10326582565904" r="4.81855636369437" fill="#4FC3F7" opacity="0.08161109879612924"/><circle cx="275.97157686017454" cy="60" r="4.575900900410488" fill="#4FC3F7" opacity="0.09344170875847341"/><circle cx="275.97157686017454" cy="150.71377870626748" r="2.5313656113576144" fill="#4FC3F7" opacity="0.1159584897197783"/><circle cx="369.9402523227036" cy="60" r="2.475195691920817" fill="#4FC3F7" opacity="0.08074709130451084"/><circle cx="369.9402523227036" cy="170.6588901206851" r="4.582228124607354" fill="#4FC3F7" opacity="0.0939803675748408"/><circle cx="369.9402523227036" cy="282.7393699903041" r="4.506682817125693" fill="#4FC3F7" opacity="0.11118042508140207"/><circle cx="369.9402523227036" cy="388.60201506875455" r="3.011650077532977" fill="#4FC3F7" opacity="0.10076110143214465"/><circle cx="472.39244357682765" cy="60" r="3.4165213252417743" fill="#4FC3F7" opacity="0.06621350750327111"/><circle cx="472.39244357682765" cy="146.23110288754106" r="4.964504718082026" fill="#4FC3F7" opacity="0.10873816438019276"/><circle cx="472.39244357682765" cy="566.6957503370941" r="3.0384934877511114" fill="#4FC3F7" opacity="0.11639313852414489"/><circle cx="581.7061717342585" cy="252.6987414713949" r="2.9481715485453606" fill="#4FC3F7" opacity="0.10031873349100351"/><circle cx="696.66534088552" cy="257.37856302410364" r="4.388078184565529" fill="#4FC3F7" opacity="0.10248101515695453"/><circle cx="696.66534088552" cy="555.9889069478959" r="4.607971522491425" fill="#4FC3F7" opacity="0.07225837929174304"/><circle cx="798.1910975370556" cy="60" r="3.8055817254353315" fill="#4FC3F7" opacity="0.09412070272490383"/><circle cx="798.1910975370556" cy="179.1203975956887" r="3.9324988177977502" fill="#4FC3F7" opacity="0.06599070427939296"/><circle cx="798.1910975370556" cy="516.9005127809942" r="4.212524267844856" fill="#4FC3F7" opacity="0.11201074684038759"/><circle cx="915.1999855320901" cy="60" r="2.396800243994221" fill="#4FC3F7" opacity="0.06410168094560505"/><circle cx="1016.1165571119636" cy="332.4886551313102" r="4.727563343476504" fill="#4FC3F7" opacity="0.08657033912837506"/><circle cx="1108.542285002768" cy="264.9014491587877" r="2.451663937419653" fill="#4FC3F7" opacity="0.07652807204052806"/><circle cx="1108.542285002768" cy="353.69790645316243" r="2.800427626352757" fill="#4FC3F7" opacity="0.12516140332445502"/><line x1="362.47380627319217" y1="418.3180682826787" x2="473.85348659940064" y2="392.04708576668054" stroke="#4FC3F7" stroke-width="1" opacity="0.06"/><line x1="908.690975420177" y1="339.11633206531405" x2="1001.9312557391822" y2="363.3228201325983" stroke="#4FC3F7" stroke-width="1" opacity="0.06"/><line x1="124.11431143991649" y1="467.71137532545254" x2="277.9889850411564" y2="482.99649361288175" stroke="#4FC3F7" stroke-width="1" opacity="0.06"/>
+
+  <!-- Large icon watermark -->
+  <rect x="925.0488034449518" y="111.42453213222325" width="166.55928541906178" height="148.05269815027714" rx="9.253293634392321" fill="none" stroke="#4FC3F7" stroke-width="2" opacity="0.12"/><line x1="1008.3284461544827" y1="111.42453213222325" x2="1008.3284461544827" y2="259.4772302825004" stroke="#4FC3F7" stroke-width="2" opacity="0.12"/>
+
+  <!-- Subtle grid overlay -->
+  <rect width="1200" height="630" fill="url(#bg-812160981)" opacity="0"/>
+
+  <!-- Bottom gradient overlay for text readability -->
+  <rect x="0" y="300" width="1200" height="330" fill="url(#bg-812160981)" opacity="0.3"/>
+
+  <!-- Accent line -->
+  <rect x="80" y="240" width="60" height="4" rx="2" fill="url(#accent-line-812160981)"/>
+
+  <!-- Category badge -->
+  <rect x="80" y="200" width="98" height="30" rx="15" fill="#4FC3F7" opacity="0.2"/>
+  <text x="96" y="220" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#4FC3F7" letter-spacing="2" text-anchor="start">GUIDES</text>
+
+  <!-- Title -->
+  <text x="80" y="300" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Setting Up MetaMask: Your Gateway to</text>
+  <text x="80" y="352.5" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Web3 and DeFi</text>
+
+  <!-- Author bar -->
+  <g transform="translate(80, 435)">
+    <!-- Author avatar circle -->
+    <circle cx="16" cy="12" r="16" fill="#4FC3F7" opacity="0.2"/>
+    <text x="16" y="17" font-family="'Fira Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#4FC3F7" text-anchor="middle">YK</text>
+
+    <text x="44" y="10" font-family="'Fira Sans', Arial, sans-serif" font-size="14" font-weight="600" fill="#4FC3F7">Yosef Kamel</text>
+    <text x="44" y="28" font-family="'Fira Sans', Arial, sans-serif" font-size="12" font-weight="400" fill="white" opacity="0.5">Crypto Pointers</text>
+  </g>
+
+  <!-- Branding: bottom bar -->
+  <rect x="0" y="610" width="1200" height="20" fill="#4FC3F7" opacity="0.08"/>
+  <text x="1120" y="600" font-family="'Fira Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="white" opacity="0.25" text-anchor="end">cryptopointers.com</text>
+
+  <!-- Corner accent -->
+  <rect x="0" y="0" width="4" height="630" fill="#4FC3F7" opacity="0.3"/>
+</svg>

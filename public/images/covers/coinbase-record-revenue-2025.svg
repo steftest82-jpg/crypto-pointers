@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-1324742307" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#451A03"/>
+      <stop offset="100%" stop-color="#1a0a02"/>
+    </linearGradient>
+    <radialGradient id="orb1-1324742307" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FCD34D" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FCD34D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2-1324742307" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent-line-1324742307" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-1324742307)"/>
+
+  <!-- Glow orbs -->
+  <ellipse cx="971.2192775215954" cy="-46.96955634281039" rx="350" ry="300" fill="url(#orb1-1324742307)"/>
+  <ellipse cx="-97.4518109112978" cy="570.5636615864933" rx="300" ry="280" fill="url(#orb2-1324742307)"/>
+
+  <!-- Category decorations -->
+  <circle cx="147.29220885783434" cy="456.77933466620743" r="22.101994887925684" fill="#FCD34D" opacity="0.08121805693488568"/><circle cx="513.0751197226346" cy="494.9244429683313" r="60.54147720802575" fill="#FCD34D" opacity="0.046592305940575895"/><circle cx="1069.8673943057656" cy="187.6488280808553" r="57.2908656205982" fill="#FCD34D" opacity="0.07577742293011397"/><circle cx="306.7216915078461" cy="488.81419762037694" r="49.29289198946208" fill="#FCD34D" opacity="0.05875242740381509"/><circle cx="1042.325068730861" cy="429.65559834614396" r="43.9785589883104" fill="#FCD34D" opacity="0.054708710359409454"/><circle cx="82.41675272583961" cy="524.4010769063607" r="51.868258505128324" fill="#FCD34D" opacity="0.07346673124004155"/><circle cx="846.6800440102816" cy="77.60379611514509" r="76.60826390143484" fill="#FCD34D" opacity="0.032323569855652746"/><circle cx="832.9141636379063" cy="566.8894790578634" r="74.07767801079899" fill="#FCD34D" opacity="0.0699847953999415"/><line x1="726.631404273212" y1="111.61310906521976" x2="987.1969643514603" y2="-22.14134602341801" stroke="#FCD34D" stroke-width="1" opacity="0.08"/><line x1="450.8973232470453" y1="146.92615364911035" x2="624.795197462663" y2="82.92983471183106" stroke="#FCD34D" stroke-width="1" opacity="0.08"/><line x1="55.63445230945945" y1="138.70013642124832" x2="325.64356424845755" y2="16.23264073394239" stroke="#FCD34D" stroke-width="1" opacity="0.08"/><line x1="353.1881494447589" y1="375.2767800469883" x2="569.2064011935145" y2="239.73482643486932" stroke="#FCD34D" stroke-width="1" opacity="0.08"/>
+
+  <!-- Large icon watermark -->
+  <path d="974.5005724467337,95.05810266826302 L906.8232299061492,201.4082123748958 L984.1687642382458,201.4082123748958 L955.1641888637096,288.42193849850446 L1042.1779149873182,172.4036370003596 L964.8323806552216,172.4036370003596 L1013.173339612782,95.05810266826302" fill="#FCD34D" opacity="0.15"/>
+
+  <!-- Subtle grid overlay -->
+  <rect width="1200" height="630" fill="url(#bg-1324742307)" opacity="0"/>
+
+  <!-- Bottom gradient overlay for text readability -->
+  <rect x="0" y="300" width="1200" height="330" fill="url(#bg-1324742307)" opacity="0.3"/>
+
+  <!-- Accent line -->
+  <rect x="80" y="240" width="60" height="4" rx="2" fill="url(#accent-line-1324742307)"/>
+
+  <!-- Category badge -->
+  <rect x="80" y="200" width="76" height="30" rx="15" fill="#FCD34D" opacity="0.2"/>
+  <text x="96" y="220" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#FCD34D" letter-spacing="2" text-anchor="start">NEWS</text>
+
+  <!-- Title -->
+  <text x="80" y="300" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Coinbase Reports Record Revenue as</text>
+  <text x="80" y="352.5" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Crypto Market Booms</text>
+
+  <!-- Author bar -->
+  <g transform="translate(80, 435)">
+    <!-- Author avatar circle -->
+    <circle cx="16" cy="12" r="16" fill="#FCD34D" opacity="0.2"/>
+    <text x="16" y="17" font-family="'Fira Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#FCD34D" text-anchor="middle">YK</text>
+
+    <text x="44" y="10" font-family="'Fira Sans', Arial, sans-serif" font-size="14" font-weight="600" fill="#FCD34D">Yosef Kamel</text>
+    <text x="44" y="28" font-family="'Fira Sans', Arial, sans-serif" font-size="12" font-weight="400" fill="white" opacity="0.5">Crypto Pointers</text>
+  </g>
+
+  <!-- Branding: bottom bar -->
+  <rect x="0" y="610" width="1200" height="20" fill="#FCD34D" opacity="0.08"/>
+  <text x="1120" y="600" font-family="'Fira Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="white" opacity="0.25" text-anchor="end">cryptopointers.com</text>
+
+  <!-- Corner accent -->
+  <rect x="0" y="0" width="4" height="630" fill="#FCD34D" opacity="0.3"/>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-218490945" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2e1a"/>
+      <stop offset="100%" stop-color="#0d1a0d"/>
+    </linearGradient>
+    <radialGradient id="orb1-218490945" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#66BB6A" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#66BB6A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2-218490945" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent-line-218490945" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#66BB6A"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-218490945)"/>
+
+  <!-- Glow orbs -->
+  <ellipse cx="801.6982612432912" cy="-40.37217115983367" rx="350" ry="300" fill="url(#orb1-218490945)"/>
+  <ellipse cx="-0.518893264234066" cy="597.2464443650097" rx="300" ry="280" fill="url(#orb2-218490945)"/>
+
+  <!-- Category decorations -->
+  <path d="M0,436.1214693170041 Q50,465.7345029525459 100,382.26458759745583 Q150,367.45244967751205 200,381.33213771507144 Q250,484.6644504927099 300,403.01081858342513 Q350,465.73906345292926 400,474.79384924517944 Q450,326.752323564142 500,378.586968453601 Q550,497.46536291204393 600,406.4547799527645 Q650,393.5474726371467 700,427.3422265192494 Q750,424.84759953804314 800,373.80821977276355 Q850,427.99207060597837 900,452.1753057837486 Q950,399.29083050228655 1000,458.58306403970346 Q1050,316.25113715417683 1100,409.3733487534337 Q1150,361.47034424357116 1200,455.5389542016201 Q1250,439.22158796340227 1300,445.657246990595" fill="none" stroke="#66BB6A" stroke-width="2" opacity="0.08"/><rect x="168.57920181937516" y="219.35503906570375" width="8" height="135.39750583469868" rx="2" fill="#66BB6A" opacity="0.06"/><line x1="172.57920181937516" y1="199.35503906570375" x2="172.57920181937516" y2="374.7525449004024" stroke="#66BB6A" stroke-width="1" opacity="0.05"/><rect x="363.42201872728765" y="223.63184350542724" width="8" height="112.80938657931983" rx="2" fill="#66BB6A" opacity="0.06"/><line x1="367.42201872728765" y1="203.63184350542724" x2="367.42201872728765" y2="356.4412300847471" stroke="#66BB6A" stroke-width="1" opacity="0.05"/><rect x="522.9403691925108" y="279.0406730957329" width="8" height="143.32643170841038" rx="2" fill="#66BB6A" opacity="0.06"/><line x1="526.9403691925108" y1="259.0406730957329" x2="526.9403691925108" y2="442.3671048041433" stroke="#66BB6A" stroke-width="1" opacity="0.05"/><rect x="721.3259521219879" y="377.18696715310216" width="8" height="68.62497517839074" rx="2" fill="#66BB6A" opacity="0.06"/><line x1="725.3259521219879" y1="357.18696715310216" x2="725.3259521219879" y2="465.8119423314929" stroke="#66BB6A" stroke-width="1" opacity="0.05"/><rect x="883.5409197490662" y="245.91264789924026" width="8" height="177.49097876250744" rx="2" fill="#66BB6A" opacity="0.06"/><line x1="887.5409197490662" y1="225.91264789924026" x2="887.5409197490662" y2="443.4036266617477" stroke="#66BB6A" stroke-width="1" opacity="0.05"/><rect x="1050.7235036976635" y="244.60888635367155" width="8" height="139.3687817081809" rx="2" fill="#66BB6A" opacity="0.06"/><line x1="1054.7235036976635" y1="224.60888635367155" x2="1054.7235036976635" y2="403.97766806185246" stroke="#66BB6A" stroke-width="1" opacity="0.05"/>
+
+  <!-- Large icon watermark -->
+  <polyline points="935.2699463721365,369.2081585014239 995.4315305082127,272.94962388370186 1055.593114644289,309.0465743653476 1115.7546987803653,200.75572292041034 1175.9162829164416,152.62645561154932" fill="none" stroke="#66BB6A" stroke-width="3" opacity="0.12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Subtle grid overlay -->
+  <rect width="1200" height="630" fill="url(#bg-218490945)" opacity="0"/>
+
+  <!-- Bottom gradient overlay for text readability -->
+  <rect x="0" y="300" width="1200" height="330" fill="url(#bg-218490945)" opacity="0.3"/>
+
+  <!-- Accent line -->
+  <rect x="80" y="240" width="60" height="4" rx="2" fill="url(#accent-line-218490945)"/>
+
+  <!-- Category badge -->
+  <rect x="80" y="200" width="131" height="30" rx="15" fill="#66BB6A" opacity="0.2"/>
+  <text x="96" y="220" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#66BB6A" letter-spacing="2" text-anchor="start">INVESTING</text>
+
+  <!-- Title -->
+  <text x="80" y="300" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">AI and Crypto: The Best AI Tokens to</text>
+  <text x="80" y="352.5" font-family="'Fira Sans', 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" fill="white" letter-spacing="-0.5">Invest In for 2025</text>
+
+  <!-- Author bar -->
+  <g transform="translate(80, 435)">
+    <!-- Author avatar circle -->
+    <circle cx="16" cy="12" r="16" fill="#66BB6A" opacity="0.2"/>
+    <text x="16" y="17" font-family="'Fira Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#66BB6A" text-anchor="middle">YK</text>
+
+    <text x="44" y="10" font-family="'Fira Sans', Arial, sans-serif" font-size="14" font-weight="600" fill="#66BB6A">Yosef Kamel</text>
+    <text x="44" y="28" font-family="'Fira Sans', Arial, sans-serif" font-size="12" font-weight="400" fill="white" opacity="0.5">Crypto Pointers</text>
+  </g>
+
+  <!-- Branding: bottom bar -->
+  <rect x="0" y="610" width="1200" height="20" fill="#66BB6A" opacity="0.08"/>
+  <text x="1120" y="600" font-family="'Fira Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="white" opacity="0.25" text-anchor="end">cryptopointers.com</text>
+
+  <!-- Corner accent -->
+  <rect x="0" y="0" width="4" height="630" fill="#66BB6A" opacity="0.3"/>
+</svg>
