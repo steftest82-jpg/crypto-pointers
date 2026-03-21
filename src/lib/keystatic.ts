@@ -25,7 +25,7 @@ export interface Post {
   content: string;
 }
 
-const POSTS_DIR = path.join(process.cwd(), 'content', 'posts');
+const POSTS_DIR = path.join(process.cwd(), 'src', 'content', 'posts');
 
 function ensurePostsDir(): void {
   if (!fs.existsSync(POSTS_DIR)) {
@@ -36,12 +36,27 @@ function ensurePostsDir(): void {
 export function getAllPosts(): Post[] {
   ensurePostsDir();
 
-  const fileNames = fs
-    .readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith('.mdx') || f.endsWith('.md'));
+  // Support both flat files (slug.mdx) and subdirectories (slug/index.mdx)
+  const entries = fs.readdirSync(POSTS_DIR);
+  const posts: Post[] = [];
 
-  const posts: Post[] = fileNames.map((fileName) => {
-    const filePath = path.join(POSTS_DIR, fileName);
+  for (const entry of entries) {
+    const entryPath = path.join(POSTS_DIR, entry);
+    const stat = fs.statSync(entryPath);
+    let filePath: string | null = null;
+
+    if (stat.isDirectory()) {
+      // Subdirectory: look for index.mdx or index.md
+      const indexMdx = path.join(entryPath, 'index.mdx');
+      const indexMd = path.join(entryPath, 'index.md');
+      if (fs.existsSync(indexMdx)) filePath = indexMdx;
+      else if (fs.existsSync(indexMd)) filePath = indexMd;
+    } else if (entry.endsWith('.mdx') || entry.endsWith('.md')) {
+      filePath = entryPath;
+    }
+
+    if (!filePath) continue;
+
     const raw = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(raw);
 
@@ -49,7 +64,7 @@ export function getAllPosts(): Post[] {
       title: (data.title as string) || '',
       slug:
         (data.slug as string) ||
-        fileName.replace(/\.mdx?$/, ''),
+        entry.replace(/\.mdx?$/, ''),
       publishedAt: (data.publishedAt as string) || new Date().toISOString(),
       excerpt: (data.excerpt as string) || '',
       coverImage: (data.coverImage as string) || 'https://picsum.photos/seed/crypto/1200/630',
@@ -66,8 +81,8 @@ export function getAllPosts(): Post[] {
         : [],
     };
 
-    return { frontmatter, content };
-  });
+    posts.push({ frontmatter, content });
+  }
 
   posts.sort(
     (a, b) =>

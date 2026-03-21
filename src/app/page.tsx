@@ -220,7 +220,7 @@ export default function HomePage() {
       {Object.entries(categoryMeta).map(([catKey, meta]) => {
         const posts = byCategory[catKey];
         if (!posts || posts.length === 0) return null;
-        const displayPosts = posts.slice(0, 6);
+        const displayPosts = posts.slice(0, 5);
         return (
           <section key={catKey} className="container-wide section-padding">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
