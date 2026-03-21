@@ -216,7 +216,7 @@ const PostCard: FC<PostCardProps> = ({
             <div className="flex items-center gap-2.5">
               <div className="relative w-7 h-7 rounded-full overflow-hidden ring-1 ring-accent/20 flex-shrink-0">
                 <Image
-                  src="http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&crop=face"
                   alt={post.author}
                   fill
                   className="object-cover"

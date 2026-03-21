@@ -139,7 +139,7 @@ function getDefaultPosts(): Post[] {
       excerpt:
         'Bitcoin has shattered the $100,000 barrier for the first time. We break down the catalysts, what institutional players are doing, and how you should position your portfolio right now.',
       coverImage:
-        'http://img.b2bpic.net/premium-photo/vibrant-illustration-businessman-celebrating-success-with-dynamic-colors-expressive-movements_34926-7829.jpg',
+        'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&fit=crop',
       categories: ['crypto-news', 'crypto-investing'],
       keyTakeaways: [
         'Bitcoin crossed $100K driven by institutional ETF inflows',
@@ -159,7 +159,7 @@ function getDefaultPosts(): Post[] {
       excerpt:
         'New to crypto? This comprehensive guide walks you through everything — from setting up your first wallet to building a diversified crypto portfolio that matches your risk tolerance.',
       coverImage:
-        'http://img.b2bpic.net/free-photo/study-halls-biology-digital-illustrations_456031-75.jpg',
+        'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&fit=crop',
       categories: ['crypto-guides', 'crypto-investing'],
       keyTakeaways: [
         'Start with reputable exchanges like Coinbase or Kraken',
@@ -179,7 +179,7 @@ function getDefaultPosts(): Post[] {
       excerpt:
         'The battle between Ethereum and Solana intensifies. We compare fees, speed, ecosystem maturity, and investment potential to help you decide where to allocate capital.',
       coverImage:
-        'http://img.b2bpic.net/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg',
+        'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&fit=crop',
       categories: ['crypto-reviews', 'crypto-investing'],
       keyTakeaways: [
         'Ethereum leads in ecosystem maturity and total value locked',
@@ -199,7 +199,7 @@ function getDefaultPosts(): Post[] {
       excerpt:
         'Your crypto is only as safe as your wallet. We tested and reviewed the top 5 crypto wallets of 2025, ranking them on security, user experience, and supported assets.',
       coverImage:
-        'http://img.b2bpic.net/free-photo/blurred-hotel-reception_1203-89.jpg',
+        'https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=800&fit=crop',
       categories: ['crypto-reviews', 'crypto-guides'],
       keyTakeaways: [
         'Ledger Nano X remains the gold standard for hardware wallets',
@@ -219,7 +219,7 @@ function getDefaultPosts(): Post[] {
       excerpt:
         'Yield farming can generate substantial passive income, but the risks are real. This guide explains how DeFi yield farming works, the best strategies, and how to avoid common traps.',
       coverImage:
-        'http://img.b2bpic.net/premium-photo/lizard-sweater-contemplating-sunset_1150025-79783.jpg',
+        'https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=800&fit=crop',
       categories: ['crypto-guides', 'crypto-investing'],
       keyTakeaways: [
         'Yield farming involves providing liquidity to DeFi protocols for rewards',
@@ -239,7 +239,7 @@ function getDefaultPosts(): Post[] {
       excerpt:
         'The SEC has officially approved spot Ethereum ETFs, opening the floodgates for institutional capital. Here is what this historic decision means for ETH price and the broader market.',
       coverImage:
-        'http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&crop=face',
       categories: ['crypto-news'],
       keyTakeaways: [
         'Spot Ethereum ETFs are now approved for trading on major exchanges',

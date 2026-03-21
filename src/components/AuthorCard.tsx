@@ -8,7 +8,7 @@ interface AuthorCardProps {
 
 const AuthorCard: FC<AuthorCardProps> = ({ variant = 'full' }) => {
   const authorImage =
-    'http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg';
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&crop=face';
 
   if (variant === 'inline') {
     return (

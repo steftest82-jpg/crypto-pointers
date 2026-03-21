@@ -11,7 +11,7 @@ const AuthorBio: FC<AuthorBioProps> = ({ compact = false }) => {
       <div className="flex items-center gap-4">
         <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/30 flex-shrink-0">
           <Image
-            src="http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&crop=face"
             alt="Yosef Kamel — Lead Author at Crypto Pointers"
             fill
             className="object-cover"
@@ -31,7 +31,7 @@ const AuthorBio: FC<AuthorBioProps> = ({ compact = false }) => {
       <div className="flex flex-col sm:flex-row items-start gap-6">
         <div className="relative w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-accent/30 flex-shrink-0">
           <Image
-            src="http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&crop=face"
             alt="Yosef Kamel — Lead Author at Crypto Pointers"
             fill
             className="object-cover"

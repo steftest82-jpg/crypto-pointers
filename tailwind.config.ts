@@ -117,7 +117,7 @@ const config: Config = {
         'gradient-hero': 'linear-gradient(135deg, #451A03 0%, #78350F 40%, #B45309 80%, #D97706 100%)',
         'gradient-warm': 'linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 50%, #FDE68A 100%)',
         'gradient-cta': 'linear-gradient(135deg, #D97706 0%, #B45309 50%, #92400E 100%)',
-        'gradient-card': 'linear-gradient(180deg, rgba(255, 251, 235, 0) 0%, rgba(255, 251, 235, 1) 100%)',
+        'gradient-card': 'linear-gradient(180deg, rgba(255, 251, 235, 0) 60%, rgba(255, 251, 235, 0.15) 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',

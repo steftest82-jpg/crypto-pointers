@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   },
 };
 
+const categoryMeta: Record<string, { label: string; slug: string; tagline: string }> = {
+  'crypto-news': { label: 'Crypto News', slug: 'crypto-news', tagline: 'Breaking stories & market-moving updates' },
+  'crypto-guides': { label: 'Crypto Guides', slug: 'crypto-guides', tagline: 'Learn the fundamentals & advanced strategies' },
+  'crypto-investing': { label: 'Crypto Investing', slug: 'crypto-investing', tagline: 'Portfolio ideas & investment analysis' },
+  'crypto-reviews': { label: 'Crypto Reviews', slug: 'crypto-reviews', tagline: 'Honest takes on wallets, exchanges & tools' },
+};
+
 function getHomepageData() {
   const allPosts = getAllPosts();
 
@@ -32,22 +39,33 @@ function getHomepageData() {
   });
 
   const featured = toPostCard(allPosts[0]);
-  const latest = allPosts.slice(1, 7).map(toPostCard);
 
-  return { featured, latest };
+  // Group posts by primary category (skip featured post)
+  const byCategory: Record<string, ReturnType<typeof toPostCard>[]> = {};
+  for (const cat of Object.keys(categoryMeta)) {
+    byCategory[cat] = [];
+  }
+  for (const post of allPosts.slice(1)) {
+    const primary = post.frontmatter.categories[0];
+    if (primary && byCategory[primary]) {
+      byCategory[primary].push(toPostCard(post));
+    }
+  }
+
+  return { featured, byCategory };
 }
 
 const trendingTopics = [
-  { label: 'Bitcoin ETF', href: '/blog' },
-  { label: 'Solana DeFi', href: '/blog' },
-  { label: 'Layer 2 Scaling', href: '/blog' },
-  { label: 'Meme Coins', href: '/blog' },
-  { label: 'Crypto Tax 2025', href: '/blog' },
-  { label: 'Staking Rewards', href: '/blog' },
+  { label: 'Bitcoin ETF', href: '/category/crypto-news' },
+  { label: 'Solana DeFi', href: '/category/crypto-guides' },
+  { label: 'Layer 2 Scaling', href: '/category/crypto-guides' },
+  { label: 'Meme Coins', href: '/category/crypto-news' },
+  { label: 'Crypto Tax 2025', href: '/category/crypto-investing' },
+  { label: 'Staking Rewards', href: '/category/crypto-investing' },
 ];
 
 export default function HomePage() {
-  const { featured: featuredPost, latest: latestPosts } = getHomepageData();
+  const { featured: featuredPost, byCategory } = getHomepageData();
 
   const formattedFeaturedDate = new Date(
     featuredPost.publishedAt
@@ -117,7 +135,7 @@ export default function HomePage() {
                   <div className="flex items-center gap-4">
                     <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-accent/30 flex-shrink-0">
                       <Image
-                        src="http://img.b2bpic.net/premium-photo/person-business-businesswoman-woman-adult-female-smiling-portrait-office-horizontal-photog_1064589-402141.jpg"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&crop=face"
                         alt="Yosef Kamel"
                         fill
                         className="object-cover"
@@ -197,66 +215,54 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================
-          LATEST POSTS GRID
+          CATEGORY SECTIONS
           ================================================================ */}
-      <section className="container-wide section-padding">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <span className="inline-block text-[11px] font-extrabold uppercase tracking-widest text-primary mb-2">
-              Fresh Off the Press
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-text tracking-tight">
-              Latest <span className="gradient-text">Articles</span>
-            </h2>
-          </div>
-          <Link
-            href="/blog"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-colors duration-200"
-          >
-            View all posts
-            <svg
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
-        </div>
+      {Object.entries(categoryMeta).map(([catKey, meta]) => {
+        const posts = byCategory[catKey];
+        if (!posts || posts.length === 0) return null;
+        const displayPosts = posts.slice(0, 6);
+        return (
+          <section key={catKey} className="container-wide section-padding">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="inline-block text-[11px] font-extrabold uppercase tracking-widest text-primary mb-2">
+                  {meta.tagline}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-text tracking-tight">
+                  {meta.label.split(' ')[0]}{' '}
+                  <span className="gradient-text">{meta.label.split(' ').slice(1).join(' ')}</span>
+                </h2>
+              </div>
+              <Link
+                href={`/category/${meta.slug}`}
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-colors duration-200"
+              >
+                View all {meta.label.toLowerCase()}
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {latestPosts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
-
-        <div className="text-center mt-14">
-          <Link href="/blog" className="btn-outline gap-2">
-            Explore the Full Archive
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </Link>
-        </div>
-      </section>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {displayPosts.map((post) => (
+                <PostCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
 
       {/* ================================================================
           STATS BAR
