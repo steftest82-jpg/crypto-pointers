@@ -4,10 +4,10 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com'
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Crypto Pointers — Your Trusted Source of Crypto Information',
     template: '%s | Crypto Pointers',
@@ -27,8 +27,11 @@ export const metadata: Metadata = {
     'blockchain technology',
     'crypto portfolio',
     'altcoin analysis',
+    'crypto tax',
+    'NFT guide',
+    'staking rewards',
   ],
-  authors: [{ name: 'Yosef Kamel', url: 'https://cryptopointers.com/about' }],
+  authors: [{ name: 'Yosef Kamel', url: `${SITE_URL}/about` }],
   creator: 'Crypto Pointers',
   publisher: 'Crypto Pointers',
   formatDetection: {
@@ -79,7 +82,68 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.svg',
+    apple: '/favicon.svg',
   },
+  manifest: '/manifest.json',
+};
+
+// Global JSON-LD schemas — Organization + WebSite + SearchAction
+const globalJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Crypto Pointers',
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/favicon.svg`,
+        width: 512,
+        height: 512,
+      },
+      description: 'Bold crypto analysis, investing guides, honest reviews, and breaking news for the modern crypto investor.',
+      foundingDate: '2024',
+      sameAs: [
+        'https://x.com/cryptopointers',
+        'https://youtube.com/@cryptopointers',
+        'https://linkedin.com/company/cryptopointers',
+        'https://t.me/cryptopointers',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@cryptopointers.com',
+        contactType: 'customer support',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Crypto Pointers',
+      description: 'Your trusted crypto magazine — bold analysis, guides, reviews, and breaking news.',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: 'en-US',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#author`,
+      name: 'Yosef Kamel',
+      url: `${SITE_URL}/about`,
+      jobTitle: 'Lead Crypto Analyst',
+      description: 'Seasoned crypto analyst and founding voice behind Crypto Pointers. Specializes in Bitcoin, Ethereum, DeFi, and market analysis.',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
+      sameAs: [],
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -92,6 +156,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Global structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }}
+        />
+
         {gaId && (
           <>
             <Script

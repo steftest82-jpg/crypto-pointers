@@ -85,35 +85,109 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
   const postUrl = `${siteUrl}/blog/${frontmatter.slug}`;
 
+  const isNewsArticle = frontmatter.categories.some(c =>
+    c.toLowerCase().includes('news')
+  );
+  const wordCount = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+
+  // Extract FAQ questions from content (h3 tags that end with ?)
+  const faqMatches = content.match(/<h3[^>]*>([^<]*\?)<\/h3>\s*<p>([^<]*)<\/p>/g) || [];
+  const faqItems = faqMatches.map(match => {
+    const qMatch = match.match(/<h3[^>]*>([^<]*\?)<\/h3>/);
+    const aMatch = match.match(/<p>([^<]*)<\/p>/);
+    return {
+      question: qMatch ? qMatch[1] : '',
+      answer: aMatch ? aMatch[1] : '',
+    };
+  }).filter(f => f.question && f.answer);
+
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: frontmatter.title,
-    description: frontmatter.excerpt,
-    image: frontmatter.coverImage,
-    datePublished: frontmatter.publishedAt,
-    dateModified: frontmatter.publishedAt,
-    author: {
-      '@type': 'Person',
-      name: frontmatter.author,
-      url: `${siteUrl}/about`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Crypto Pointers',
-      url: siteUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteUrl}/favicon.ico`,
+    '@graph': [
+      {
+        '@type': isNewsArticle ? 'NewsArticle' : 'BlogPosting',
+        '@id': postUrl,
+        headline: frontmatter.title,
+        description: frontmatter.excerpt,
+        image: {
+          '@type': 'ImageObject',
+          url: frontmatter.coverImage,
+          width: 1200,
+          height: 630,
+        },
+        datePublished: frontmatter.publishedAt,
+        dateModified: frontmatter.publishedAt,
+        author: {
+          '@type': 'Person',
+          '@id': `${siteUrl}/#author`,
+          name: frontmatter.author,
+          url: `${siteUrl}/about`,
+        },
+        publisher: {
+          '@type': 'Organization',
+          '@id': `${siteUrl}/#organization`,
+          name: 'Crypto Pointers',
+          url: siteUrl,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${siteUrl}/favicon.svg`,
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': postUrl,
+        },
+        keywords: frontmatter.focusKeyword,
+        articleSection: frontmatter.categories.join(', '),
+        wordCount,
+        inLanguage: 'en-US',
+        isAccessibleForFree: true,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['.article-content h2', '.article-content p:first-of-type'],
+        },
       },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
-    keywords: frontmatter.focusKeyword,
-    articleSection: frontmatter.categories.join(', '),
-    wordCount: content.replace(/<[^>]*>/g, '').split(/\s+/).length,
+      // BreadcrumbList schema
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: `${siteUrl}/blog`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: frontmatter.title,
+            item: postUrl,
+          },
+        ],
+      },
+      // FAQPage schema (if article has FAQ section)
+      ...(faqItems.length > 0
+        ? [
+            {
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map(faq => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer,
+                },
+              })),
+            },
+          ]
+        : []),
+    ],
   };
 
   return (

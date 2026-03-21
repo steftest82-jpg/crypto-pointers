@@ -13,6 +13,7 @@ const categories = [
 const quickLinks = [
   { href: '/', label: 'Home' },
   { href: '/blog', label: 'All Posts' },
+  { href: '/glossary', label: 'Crypto Glossary' },
   { href: '/about', label: 'About Us' },
   { href: '/contact', label: 'Contact' },
 ];

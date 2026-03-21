@@ -1,9 +1,11 @@
 import type { MetadataRoute } from 'next'
+import { getAllPostsFrontmatter } from '@/lib/keystatic'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
+  const posts = getAllPostsFrontmatter()
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -30,37 +32,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.4,
     },
-  ]
-
-  const categories = [
     {
-      slug: 'crypto-news',
-      changeFrequency: 'daily' as const,
-      priority: 0.85,
-    },
-    {
-      slug: 'crypto-guides',
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      slug: 'crypto-investing',
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      slug: 'crypto-reviews',
-      changeFrequency: 'weekly' as const,
-      priority: 0.75,
+      url: `${BASE_URL}/glossary`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
     },
   ]
 
-  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${BASE_URL}/category/${category.slug}`,
-    lastModified: now,
-    changeFrequency: category.changeFrequency,
-    priority: category.priority,
+  const categories: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/category/crypto-news`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
+    { url: `${BASE_URL}/category/crypto-guides`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE_URL}/category/crypto-investing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE_URL}/category/crypto-reviews`, lastModified: now, changeFrequency: 'weekly', priority: 0.75 },
+  ]
+
+  const articlePages: MetadataRoute.Sitemap = posts.map((post, i) => ({
+    url: `${BASE_URL}/blog/${post.frontmatter.slug}`,
+    lastModified: new Date(post.frontmatter.publishedAt || now),
+    changeFrequency: 'monthly' as const,
+    priority: i < 10 ? 0.8 : 0.7, // Recent articles get higher priority
+    // Note: Next.js MetadataRoute.Sitemap doesn't support image extensions natively
+    // but the URLs are crawlable from the pages themselves
   }))
 
-  return [...staticPages, ...categoryPages]
+  return [...staticPages, ...categories, ...articlePages]
 }

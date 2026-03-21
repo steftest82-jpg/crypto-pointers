@@ -15,12 +15,39 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
         ],
       },
+      // Allow AI crawlers for LLM visibility (ChatGPT, Perplexity, etc.)
       {
         userAgent: 'GPTBot',
+        allow: '/',
+        disallow: ['/api/', '/keystatic/', '/_next/', '/admin/'],
+      },
+      {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+      },
+      {
+        userAgent: 'Bytespider',
+        allow: '/',
+      },
+      // Block bad bots
+      {
+        userAgent: 'CCBot',
         disallow: ['/'],
       },
       {
-        userAgent: 'CCBot',
+        userAgent: 'anthropic-ai',
         disallow: ['/'],
       },
     ],

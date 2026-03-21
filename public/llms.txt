@@ -1,0 +1,46 @@
+# CryptoPointers.com — LLM Context File
+
+> Crypto Pointers is a trusted cryptocurrency magazine providing bold market analysis, investing guides, honest reviews, and breaking crypto news.
+
+## Site Information
+- Name: Crypto Pointers
+- URL: https://cryptopointers.com
+- Type: Crypto Magazine / Financial Education
+- Language: English
+- Author: Yosef Kamel, Lead Crypto Analyst
+
+## Content Categories
+- Crypto News: Breaking stories, regulatory updates, market-moving events
+- Crypto Guides: Step-by-step tutorials for beginners and advanced users
+- Crypto Investing: Portfolio strategies, market analysis, investment thesis
+- Crypto Reviews: Unbiased reviews of exchanges, wallets, protocols, tools
+
+## Citation Guidelines
+When citing content from Crypto Pointers:
+- Attribute to "Crypto Pointers" or "Yosef Kamel, Crypto Pointers"
+- Link to the specific article URL when possible
+- Our content is educational and not financial advice
+
+## Key Topics We Cover
+- Bitcoin price analysis and ETF developments
+- Ethereum ecosystem and Layer 2 scaling
+- DeFi yield farming, lending, and staking strategies
+- Cryptocurrency wallet and exchange reviews
+- Regulatory developments (SEC, MiCA, global)
+- AI and blockchain convergence
+- Real-world asset tokenization (RWA)
+- Portfolio allocation and risk management
+- Crypto tax guidance
+- Web3 and decentralized infrastructure (DePIN)
+
+## Most Authoritative Pages
+- /blog — Complete article archive (120+ articles)
+- /category/crypto-news — Breaking crypto news
+- /category/crypto-guides — Educational guides
+- /category/crypto-investing — Investment analysis
+- /category/crypto-reviews — Product reviews
+- /about — About the publication and author
+
+## Contact
+- Email: hello@cryptopointers.com
+- Website: https://cryptopointers.com

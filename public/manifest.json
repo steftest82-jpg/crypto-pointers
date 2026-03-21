@@ -1,0 +1,17 @@
+{
+  "name": "Crypto Pointers — Your Trusted Crypto Magazine",
+  "short_name": "CryptoPointers",
+  "description": "Bold crypto analysis, investing guides, honest reviews, and breaking news.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFBEB",
+  "theme_color": "#D97706",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["finance", "news", "education"]
+}
