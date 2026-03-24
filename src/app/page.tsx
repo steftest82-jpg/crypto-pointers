@@ -59,8 +59,10 @@ function getHomepageData() {
   }
   for (const post of allPosts.slice(1)) {
     const primary = post.frontmatter.categories[0];
-    if (primary && byCategory[primary] && byCategory[primary].length < 5) {
-      byCategory[primary].push(toPostCard(post));
+    if (!primary) continue;
+    const catSlug = primary.toLowerCase().replace(/\s+/g, '-');
+    if (byCategory[catSlug] && byCategory[catSlug].length < 5) {
+      byCategory[catSlug].push(toPostCard(post));
     }
   }
 
