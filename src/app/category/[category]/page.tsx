@@ -41,7 +41,7 @@ export function generateMetadata({ params }: CategoryPageProps): Metadata {
     openGraph: {
       title: `${meta.title} — Crypto Pointers`,
       description: meta.description,
-      type: 'website',
+      type: 'article',
     },
   };
 }
@@ -52,9 +52,42 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
   const posts = getPostsByCategory(params.category);
   const allCategories = getAllCategories();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
+
+  const categoryJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${siteUrl}/category/${params.category}`,
+        name: `${meta.title} — Articles & Analysis`,
+        description: meta.description,
+        url: `${siteUrl}/category/${params.category}`,
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        about: { '@type': 'Thing', name: meta.title },
+        numberOfItems: posts.length,
+        hasPart: posts.slice(0, 10).map((post) => ({
+          '@type': 'BlogPosting',
+          headline: post.frontmatter.title,
+          url: `${siteUrl}/blog/${post.frontmatter.slug}`,
+          datePublished: post.frontmatter.publishedAt,
+          author: { '@type': 'Person', name: post.frontmatter.author },
+        })),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog` },
+          { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/category/${params.category}` },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryJsonLd) }} />
       {/* ── Category Header ────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-text/[0.04] via-bg to-bg">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

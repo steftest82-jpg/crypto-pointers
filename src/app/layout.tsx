@@ -97,7 +97,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+    ],
     apple: '/favicon.svg',
   },
   manifest: '/manifest.json',
@@ -140,13 +143,10 @@ const globalJsonLd = {
       description: 'Your trusted crypto magazine — bold analysis, guides, reviews, and breaking news.',
       publisher: { '@id': `${SITE_URL}/#organization` },
       inLanguage: 'en-US',
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
-        },
-        'query-input': 'required name=search_term_string',
+      copyrightYear: 2024,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.article-excerpt', '.key-takeaways'],
       },
     },
     {

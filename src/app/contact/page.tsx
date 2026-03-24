@@ -17,9 +17,36 @@ export const metadata: Metadata = {
   },
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ContactPage',
+      name: 'Contact Crypto Pointers',
+      url: `${siteUrl}/contact`,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      description: 'Reach out to Crypto Pointers for questions, partnerships, or feedback.',
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Crypto Pointers',
+      url: siteUrl,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@cryptopointers.com',
+        contactType: 'customer support',
+        availableLanguage: 'English',
+      },
+    },
+  ],
+};
+
 export default function ContactPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }} />
       {/* ── Page Header ────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-text/[0.04] via-bg to-bg">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

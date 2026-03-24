@@ -19,6 +19,45 @@ export const metadata: Metadata = {
   },
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
+const aboutJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      '@id': `${siteUrl}/about`,
+      name: 'About Crypto Pointers',
+      url: `${siteUrl}/about`,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      description: 'Learn about Crypto Pointers, the crypto magazine founded to cut through the noise.',
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#author`,
+      name: 'Yosef Kamel',
+      url: `${siteUrl}/about`,
+      jobTitle: 'Lead Crypto Analyst & Founder',
+      description: 'Seasoned crypto analyst and founding voice behind Crypto Pointers. Specializes in Bitcoin, Ethereum, DeFi, and on-chain market analysis.',
+      knowsAbout: ['Bitcoin', 'Ethereum', 'DeFi', 'Cryptocurrency Investing', 'Blockchain Technology', 'Web3'],
+      worksFor: { '@id': `${siteUrl}/#organization` },
+      sameAs: [],
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Crypto Pointers',
+      url: siteUrl,
+      foundingDate: '2024',
+      description: 'Bold crypto analysis, investing guides, honest reviews, and breaking news for the modern crypto investor.',
+      sameAs: [
+        'https://x.com/cryptopointers',
+        'https://youtube.com/@cryptopointers',
+        'https://linkedin.com/company/cryptopointers',
+      ],
+    },
+  ],
+};
+
 export default function AboutPage() {
   const expertiseAreas = [
     {
@@ -104,6 +143,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="relative bg-gradient-hero overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">

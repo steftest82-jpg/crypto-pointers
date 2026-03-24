@@ -25,9 +25,29 @@ export default function BlogPage() {
   const categories = getAllCategories();
   const featuredPost = posts[0];
   const remainingPosts = posts.slice(1);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cryptopointers.com';
+
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Crypto Pointers Blog — All Articles',
+    description: 'Browse every article on Crypto Pointers. Crypto news, investing strategies, DeFi guides, and wallet reviews.',
+    url: `${siteUrl}/blog`,
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    numberOfItems: posts.length,
+    hasPart: posts.slice(0, 15).map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.frontmatter.title,
+      url: `${siteUrl}/blog/${post.frontmatter.slug}`,
+      datePublished: post.frontmatter.publishedAt,
+      image: post.frontmatter.coverImage,
+      author: { '@type': 'Person', name: post.frontmatter.author },
+    })),
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
       {/* ── Page Header ────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-text/[0.04] via-bg to-bg">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
