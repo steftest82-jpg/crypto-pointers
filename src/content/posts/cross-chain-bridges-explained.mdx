@@ -1,0 +1,86 @@
+---
+title: "Cross-Chain Bridges Explained: How to Move Crypto Between Blockchains"
+slug: "cross-chain-bridges-explained"
+publishedAt: "2026-03-07"
+excerpt: "Learn how cross-chain bridges work, which bridges are safest, and how to transfer your crypto between Ethereum, Solana, and other blockchains."
+coverImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=630&fit=crop"
+author: "Yosef Kamel"
+focusKeyword: "cross chain bridge crypto"
+categories:
+  - "Crypto Guides"
+keyTakeaways:
+  - "Cross-chain bridges lock tokens on one blockchain and mint equivalent tokens on another."
+  - "Bridge exploits have caused billions in losses, making bridge selection critical for security."
+  - "Native bridges operated by blockchain teams are generally safer than third-party alternatives."
+  - "Bridging times vary from minutes to days depending on the bridge type and security model."
+  - "Always verify the bridge URL and start with a small test transaction before bridging large amounts."
+tableOfContents:
+  - heading: "What Is a Cross-Chain Bridge"
+    anchor: "what-is-a-cross-chain-bridge"
+  - heading: "Types of Bridges"
+    anchor: "types-of-bridges"
+  - heading: "How to Use a Bridge Step by Step"
+    anchor: "how-to-use-a-bridge-step-by-step"
+  - heading: "Security Risks and How to Mitigate Them"
+    anchor: "security-risks-and-how-to-mitigate-them"
+  - heading: "Popular Bridges in 2026"
+    anchor: "popular-bridges-in-2026"
+  - heading: "Frequently Asked Questions"
+    anchor: "frequently-asked-questions"
+---
+
+<p>As the crypto ecosystem expands across multiple blockchains, moving assets between networks has become essential. Cross-chain bridges make this possible by connecting separate blockchains that would otherwise be unable to communicate. This guide explains how bridges work, which ones to trust, and how to transfer your crypto safely between chains.</p>
+
+<h2 id="what-is-a-cross-chain-bridge">What Is a Cross-Chain Bridge</h2>
+
+<p>A cross-chain bridge is a protocol that enables the transfer of tokens and data between two different blockchains. Without bridges, Ethereum and Solana would be completely isolated networks with no way to move assets between them. Bridges solve this interoperability problem by creating connections between these separate ecosystems.</p>
+
+<p>The basic mechanism works like a lock-and-mint system. When you bridge ETH from Ethereum to Arbitrum, the bridge locks your ETH in a <a href="/blog/what-is-smart-contract">smart contract</a> on Ethereum and mints an equivalent amount of wrapped ETH on Arbitrum. When you bridge back, the wrapped tokens are burned and the original tokens are released.</p>
+
+<p>Bridge usage has grown exponentially as DeFi activity spreads across multiple chains. Users bridge assets to access better yields, lower fees, or specific applications only available on certain networks. Understanding how bridges work is essential for anyone participating in multi-chain DeFi strategies as covered in our <a href="/blog/what-is-defi-explained">DeFi guide</a>.</p>
+
+<h2 id="types-of-bridges">Types of Bridges</h2>
+
+<p>Native bridges are built and operated by the blockchain teams themselves. Arbitrum Bridge, Optimism Bridge, and Base Bridge are examples that connect their respective <a href="/blog/what-is-layer-2-network">Layer 2 networks</a> back to Ethereum. These bridges inherit the security of Ethereum and are generally considered the safest option, though withdrawal times from L2 to L1 can take up to seven days.</p>
+
+<p>Third-party bridges like Across, Stargate, and Wormhole operate independently and often support transfers between many different chains. They typically offer faster bridging times and support for a wider range of assets. However, they introduce additional smart contract risk since you must trust both the bridge protocol and its security assumptions.</p>
+
+<p>Liquidity network bridges use pools of tokens on each chain to facilitate swaps rather than lock-and-mint mechanisms. When you bridge USDC from Ethereum to Solana, a liquidity provider on Solana sends you USDC from their pool while receiving your USDC on Ethereum. This approach is faster but depends on sufficient liquidity on both sides.</p>
+
+<h2 id="how-to-use-a-bridge-step-by-step">How to Use a Bridge Step by Step</h2>
+
+<p>First, ensure your <a href="/blog/how-to-set-up-defi-wallet">DeFi wallet</a> is set up with the networks you want to bridge between. You need the source chain's native token for gas fees (ETH on Ethereum, SOL on Solana, etc.). Navigate to the bridge's official website and connect your wallet.</p>
+
+<p>Select the source chain, destination chain, and the token you want to bridge. Enter the amount and review the estimated fees, which include the bridge's service fee and destination chain gas costs. Some bridges also show the expected arrival time and any applicable transfer limits.</p>
+
+<p>Approve the token spending (if required) and confirm the bridge transaction. The bridge will lock your tokens on the source chain and typically provide a transaction hash you can track. Wait for the destination chain to receive your tokens, which can take anywhere from 1 minute to 7 days depending on the bridge type and security verification period.</p>
+
+<h2 id="security-risks-and-how-to-mitigate-them">Security Risks and How to Mitigate Them</h2>
+
+<p>Bridge exploits represent some of the largest losses in DeFi history. The Wormhole bridge lost $320 million in 2022, and several other bridges have suffered significant hacks. Bridges are attractive targets because they hold large pools of locked assets, making a successful exploit extremely profitable for attackers. Track bridge security developments on <a href="https://www.coindesk.com/" target="_blank" rel="noopener noreferrer">CoinDesk</a>.</p>
+
+<p>Mitigate risk by using only well-established bridges with strong security track records and multiple audits. Native bridges operated by blockchain teams undergo the most rigorous security review. If using a third-party bridge, check its audit history and total value locked on <a href="https://www.coingecko.com/" target="_blank" rel="noopener noreferrer">CoinGecko</a>.</p>
+
+<p>Always send a small test transaction before bridging large amounts. Verify the bridge URL carefully to avoid phishing sites that impersonate legitimate bridges. Bookmark the official URLs of bridges you use regularly. Never bridge more than you are comfortable losing, given the historical track record of bridge exploits. For more security advice, read our <a href="/blog/how-to-avoid-crypto-scams">scam avoidance guide</a>.</p>
+
+<h2 id="popular-bridges-in-2026">Popular Bridges in 2026</h2>
+
+<p>For Ethereum to Layer 2 transfers, use the native bridges provided by each L2 network. The Arbitrum Bridge and Optimism Bridge are battle-tested and secure the most value. They are slower for withdrawals (7-day challenge period) but offer the strongest security guarantees.</p>
+
+<p>For cross-chain transfers between unrelated networks (like Ethereum to Solana), Wormhole and LayerZero support the widest range of chains. Across Protocol offers fast, capital-efficient bridging for EVM chains with competitive fees. Stargate specializes in stablecoin transfers across chains.</p>
+
+<p>Aggregator tools like LI.FI and Bungee compare bridge options and find the cheapest and fastest route for your specific transfer. They check multiple bridges simultaneously and let you choose based on price, speed, or security preference. These tools simplify the bridging process, especially when you need to find the best option among dozens of available routes.</p>
+
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+<h3>Can you lose funds when using a bridge?</h3>
+
+<p>Yes, fund loss is possible through bridge exploits, bugs in the bridge smart contracts, or user errors like sending to the wrong chain or address. Bridge hacks have caused billions in cumulative losses across the industry. To minimize risk, use established bridges with clean security track records, start with small test transactions, and never bridge more than you can afford to lose.</p>
+
+<h3>Why do some bridges take seven days to process?</h3>
+
+<p>Optimistic rollup bridges like Arbitrum and Optimism use a seven-day challenge period for withdrawals from L2 to L1. During this window, any network participant can challenge a fraudulent withdrawal by submitting a fraud proof. This delay is a security feature that protects the integrity of the bridged funds. Fast bridge services can advance you the funds immediately for a fee while they wait out the challenge period themselves.</p>
+
+<h3>Are bridged tokens the same as native tokens?</h3>
+
+<p>Bridged (wrapped) tokens represent a claim on the original tokens locked in the bridge contract, but they are technically different assets. Wrapped ETH on Solana is not native ETH; it is a Solana token backed by ETH locked in a bridge contract. This distinction matters because the wrapped token's value depends on the bridge remaining solvent and secure. If the bridge is exploited, the wrapped tokens could lose their backing and become worthless, while native tokens on their home chain remain unaffected.</p>
